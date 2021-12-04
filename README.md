@@ -2,7 +2,8 @@
 
 ## 💡 ERD
 
-<img width="686" alt="스크린샷 2021-12-04 오전 10 17 08" src="https://user-images.githubusercontent.com/73830753/144691410-6ceb9130-550a-48c7-9867-e654761d7ccd.png">
+<img width="656" alt="스크린샷 2021-12-04 오전 10 21 33" src="https://user-images.githubusercontent.com/73830753/144691473-2bb1dfff-b80a-4a24-afee-6aaa5f035a0d.png">
+
 
 ## 🛠 사용 기술 및 툴
 
