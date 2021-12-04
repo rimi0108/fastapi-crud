@@ -14,9 +14,9 @@ class ToDoList(BaseModel):
     completed: bool
 
 
-# @app.get("/")
-# def root():
-#     return {"Hello": "World!"}
+@app.get("/")
+def root():
+    return {"Hello": "World!"}
 
 
 @app.get("/todolists")
