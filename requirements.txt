@@ -3,3 +3,5 @@ Jinja2==3.0.3
 requests==2.26.0
 starlette==0.16.0
 uvicorn==0.15.0
+SQLAlchemy==1.4.27
+PyMySQL==1.0.2
