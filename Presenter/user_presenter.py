@@ -1,7 +1,10 @@
 from sqlalchemy.orm import Session
+from starlette import status
+from starlette.responses import JSONResponse, Response
+from starlette.status import HTTP_200_OK, HTTP_404_NOT_FOUND, HTTP_400_BAD_REQUEST
 
-from . import models
-from .database.schemas import UserCreate, Task, TaskCreate
+from Model import models
+from database.schemas import UserCreate, TaskCreate
 
 
 def get_user(db: Session, user_id: int):
@@ -23,15 +26,3 @@ def create_user(db: Session, user: UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
-
-
-def get_tasks(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Task).offset(skip).limit(limit).all()
-
-
-def create_user_task(db: Session, task: TaskCreate, user_id: int):
-    db_task = models.Task(**task.dict(), owner_id=user_id)
-    db.add(db_task)
-    db.commit()
-    db.refresh(db_task)
-    return db_task
