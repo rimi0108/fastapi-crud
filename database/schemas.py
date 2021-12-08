@@ -1,6 +1,5 @@
 from typing import List, Optional
 
-from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 
 
@@ -22,11 +21,16 @@ class Task(TaskBase):
 
 
 class UserBase(BaseModel):
-    email: str
+    username: str
+    email: Optional[str] = None
 
 
 class UserCreate(UserBase):
     password: str
+
+
+class UserInDB(UserBase):
+    hashed_password: str
 
 
 class User(UserBase):
@@ -44,5 +48,5 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    user_id: Optional[int] = None
+    username: Optional[str] = None
 

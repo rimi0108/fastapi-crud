@@ -1,23 +1,13 @@
 version: '3.7'
-services: 
-    # app:
-    #     build :
-    #         context: .
-    #         dockerfile: ./Dockerfile
-    #     restart: always
-    #     ports: 
-    #         - 3000:3000
-    #     depends_on:
-    #         - database
-    
+services:
     database:
         image: mariadb
         container_name: mariadb
-        ports: 
+        ports:
             - 3306:3306
         restart: always
-        environment: 
+        environment:
             MYSQL_ROOT_PASSWORD: rootroot
-            MYSQL_DATABASE : fastapi
+            MYSQL_DATABASE: fastapi
             MYSQL_USER: fastapi
             MYSQL_PASSWORD: fastapi

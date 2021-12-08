@@ -1,17 +1,18 @@
 from typing import List
 
-from fastapi import Depends, APIRouter, HTTPException
+from fastapi import Depends, APIRouter
 from sqlalchemy.orm import Session
 
 from Presenter import task_presenter
 from Model import models
 from database.schemas import Task, TaskCreate
 from database.database import SessionLocal, engine
+from dependencies import get_current_active_user
 
 
 models.Base.metadata.create_all(bind=engine)
 
-router = APIRouter(tags=["tasks"])
+router = APIRouter(tags=["tasks"], dependencies=[Depends(get_current_active_user)])
 
 # Dependency
 def get_db():
@@ -25,10 +26,13 @@ def get_db():
 # Create
 
 
-@router.post("{user_id}/task", response_model=Task)
+@router.post("/task", response_model=Task)
 async def create_task_for_user(
-    user_id: int, task: TaskCreate, db: Session = Depends(get_db),
+    task: TaskCreate,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_active_user),
 ):
+    user_id = current_user.id
     return task_presenter.create_user_task(db=db, task=task, user_id=user_id)
 
 
