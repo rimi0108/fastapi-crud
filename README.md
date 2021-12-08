@@ -12,6 +12,10 @@
 
 ## 👩‍💻 구현 기능
 
+### MVP 패턴 구현
+
+View - Presenter - Model - Presenter - View
+
 ### users
 
 - 유저에 대한 인증(Authentication)은 고려하지 않았습니다.

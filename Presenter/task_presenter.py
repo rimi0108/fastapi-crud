@@ -64,8 +64,6 @@ def modify_task(db: Session, task: PatchTask, user_id: int, task_id: int):
             .update({key: value})
         )
         db.commit()
-        print(key, value)
-
     return modify_task
 
 
