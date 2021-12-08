@@ -15,9 +15,16 @@
 ### users
 
 - 유저에 대한 인증(Authentication)은 고려하지 않았습니다.
+- `/token` endpoint에 db에 존재하는 유저의 username, password를 입력하면 토큰이 발급됩니다.
+- token을 발급받은 유저의 username과 password를 authorize하면 task api를 사용 가능합니다.
 
 ### tasks
 
--
+- 유저의 권한을 확인한 후 유저는 task를 Create, Read, Update, Delete 기능을 이용가능합니다.
+  - 유저는 user_id에 해당하는 task를 모두 읽을 수 있습니다.
+  - 유저는 task를 작성할 수 있습니다.
+  - 유저는 user_id에 해당하는 모든 task를 삭제할 수 있습니다.
+  - 유저는 하나의 특정 task를 task_id를 지정하여 삭제할 수 있습니다.
+  - 유저는 하나의 특정 task를 수정할 수 있습니다.
 
 ## 👀 실행 방법
